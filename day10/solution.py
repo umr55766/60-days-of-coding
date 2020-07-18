@@ -3,14 +3,15 @@ class CoinDispenser:
         self.coins = sorted(coins, reverse=True)
 
     def dispense(self, amount):
-        dispensable_amount = 0
-        coin_count = 0
+        coin_table = [0] + [float("inf") for _ in range(amount)]
 
-        for coin in self.coins:
-            if ((amount - dispensable_amount) // coin) == 0:
-                continue
+        for unit_amount in range(1, amount+1):
+            for coin in self.coins:
+                if unit_amount == coin:
+                    coin_table[unit_amount] = 1
+                    break
 
-            coin_count += (amount-dispensable_amount) // coin
-            dispensable_amount += ((amount-dispensable_amount) // coin) * coin
+                if unit_amount > coin:
+                    coin_table[unit_amount] = min(coin_table[unit_amount], coin_table[unit_amount-coin]+1)
 
-        return coin_count if dispensable_amount == amount else -1
+        return coin_table[amount] if coin_table[amount] < float("inf") else -1
