@@ -22,7 +22,7 @@ class BinaryTree:
 class RootToLeafNumbersSum:
     def __init__(self, values):
         self.tree = BinaryTree(values)
-        self.sum = 0
+        self._sum = 0
 
     def aggregate(self, node, number_until_now):
         if node.right:
@@ -32,8 +32,8 @@ class RootToLeafNumbersSum:
             self.aggregate(node.left, number_until_now + str(node.value))
 
         if not node.left and not node.right:
-            self.sum += int(number_until_now + str(node.value))
+            self._sum += int(number_until_now + str(node.value))
 
     def sum(self):
         self.aggregate(self.tree.root, "")
-        return self.sum
+        return self._sum
