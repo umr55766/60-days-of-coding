@@ -12,3 +12,6 @@ class Day10Test(unittest.TestCase):
 
     def test_3(self):
         self.assertEqual(CoinDispenser([1, 2, 5, 10]).dispense(33), 5)
+
+    def test_4(self):
+        self.assertEqual(CoinDispenser([2, 5]).dispense(8), 4)
