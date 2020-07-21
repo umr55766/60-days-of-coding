@@ -31,6 +31,17 @@ class LinkedList(list):
         self.current_node = self.current_node.next()
         return self.current_node
 
+    def traverse(self):
+        node = self.head
+        values = [node.value]
+
+        while node.next():
+            node = node.next()
+            values.append(node.value)
+
+        values = [str(value) for value in values]
+        return " -> ".join(values)
+
 
 def move_head(head, pos):
     for i in range(pos):
