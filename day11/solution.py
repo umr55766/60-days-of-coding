@@ -13,8 +13,10 @@ class BinaryTree:
         if i < len(values):
             temp = BinaryTreeNode(values[i])
             root = temp
-            root.left = self.insert_level_order(values, root.left, 2 * i + 1)
-            root.right = self.insert_level_order(values, root.right, 2 * i + 2)
+            if 2 * i + 1 < len(values) and values[2 * i + 1] is not None:
+                root.left = self.insert_level_order(values, root.left, 2 * i + 1)
+            if 2 * i + 2 < len(values) and values[2 * i + 2] is not None:
+                root.right = self.insert_level_order(values, root.right, 2 * i + 2)
 
         return root
 
