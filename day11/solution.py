@@ -20,6 +20,18 @@ class BinaryTree:
 
         return root
 
+    def _validate(self, node):
+        if node is None or (node.left is None and node.right is None):
+            return True
+
+        if (node.left is None or node.left.value <= node.value) and (node.right is None or node.right.value >= node.value):
+            return self._validate(node.left) and self._validate(node.right)
+
+        return False
+
+    def validate(self):
+        return self._validate(self.root)
+
 
 class RootToLeafNumbersSum:
     def __init__(self, values):
