@@ -1,14 +1,11 @@
 import unittest
 
-from day26.solution import BreakDown
+from day27.solution import DuplicateDetector
 
 
 class BreakDownTest(unittest.TestCase):
     def test_1(self):
-        self.assertTrue(BreakDown("leetcode", ["leet", "code"]).is_breakable())
+        self.assertEqual(2, DuplicateDetector([1,3,4,2,2]).detect())
 
     def test_2(self):
-        self.assertTrue(BreakDown("applepenapple", ["apple", "pen"]).is_breakable())
-
-    def test_3(self):
-        self.assertFalse(BreakDown("catsandog", ["cats", "dog", "sand", "and", "cat"]).is_breakable())
+        self.assertEqual(3, DuplicateDetector([3,1,3,4,2]).detect())
