@@ -20,14 +20,17 @@ class BinaryTree:
 
         return root
 
-    def _validate(self, node):
-        if node is None or (node.left is None and node.right is None):
+    def _validate(self, node, minimum_value=None, maximum_value=None):
+        if node is None:
             return True
 
-        if (node.left is None or node.left.value <= node.value) and (node.right is None or node.right.value >= node.value):
-            return self._validate(node.left) and self._validate(node.right)
+        if minimum_value is not None and node.value < minimum_value:
+            return False
 
-        return False
+        if maximum_value is not None and node.value > maximum_value:
+            return False
+
+        return self._validate(node.left, minimum_value, node.value) and self._validate(node.right, node.value, maximum_value)
 
     def validate(self):
         return self._validate(self.root)
