@@ -27,4 +27,4 @@ class LongestPalindromeSubstring:
             if (end - start) > (max_end - max_start):
                 max_start, max_end = start, end
 
-        return self.string[max_start:max_end]
+        return self.string[max_start:max_end+1]
