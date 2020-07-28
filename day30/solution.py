@@ -18,3 +18,11 @@ def jump(cloudSafetyIndexes, currentPosition, stepsTaken):
         return jump(cloudSafetyIndexes, currentPosition + 2, stepsTaken + 1)
 
     return stepsTaken
+
+def repeatedString(s, n):
+    countOfAsInString = len([1 for char in s if char == "a"])
+
+    totalAsCount = (n//len(s)) * countOfAsInString
+    totalAsCount += len([1 for char in s[0: (n%len(s))] if char == "a"])
+
+    return totalAsCount
