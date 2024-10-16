@@ -3,13 +3,18 @@ class MergeStringAlternatively:
         pass
 
     def merge(self, string1, string2):
-        result = ""
-        index = 0
-        while index < min(len(string1), len(string2)):
-            result += string1[index] + string2[index]
-            index += 1
+        merged = []
+        min_length = min(len(string1), len(string2))
 
-        result += string1[index:]
-        result += string2[index:]
+        # Merge characters from both strings alternately
+        for i in range(min_length):
+            merged.append(string1[i])
+            merged.append(string2[i])
 
-        return result
+        # Add remaining characters from the longer string
+        if len(string1) > min_length:
+            merged.append(string1[min_length:])
+        elif len(string2) > min_length:
+            merged.append(string2[min_length:])
+
+        return ''.join(merged)
