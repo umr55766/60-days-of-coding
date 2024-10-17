@@ -1,6 +1,6 @@
 import unittest
 
-from journey_2.day2.day3.solution import Solution
+from journey_2.day2.day2_1.solution import Solution
 
 
 class Test(unittest.TestCase):
