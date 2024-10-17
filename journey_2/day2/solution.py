@@ -1,21 +1,21 @@
+import math
+
 class GCDString:
     def __init__(self):
         pass
 
     @staticmethod
-    def calculate(param1, param2):
-        print(param1, param2)
-        if len(param1) == 0 or len(param2) == 0:
+    def gcd(a, b):
+        while b != 0:
+            a, b = b, a % b
+        return a
+
+    @staticmethod
+    def calculate(str1, str2):
+        # Check if they have non-zero GCD string.
+        if str1 + str2 != str2 + str1:
             return ""
 
-        if len(param1) % 2 != 0 and len(param2) % 2 != 0:
-            return param1 if param1 == param2 else ""
-
-        if len(param1) % 2 != 0 and len(set(param2.split(param1))) == 1:
-            return param1
-
-        result = GCDString.calculate(param1[0:len(param1)//2], param2)
-        if result:
-            return result
-
-        return GCDString.calculate(param1, param2[0:len(param2)//2])
+        # Get the GCD of the two lengths.
+        max_length = GCDString.gcd(len(str1), len(str2))
+        return str1[:max_length]
