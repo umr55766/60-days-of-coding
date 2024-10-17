@@ -3,5 +3,5 @@ class GCDString:
         pass
 
     @staticmethod
-    def calculate(param):
-        return param
+    def calculate(param1, param2):
+        return param1
