@@ -3,4 +3,5 @@ class Solution:
         pass
 
     def method_name(self, array, length):
-        return 0
+        max_sum = sum(array[:length])
+        return max_sum

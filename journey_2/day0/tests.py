@@ -1,7 +1,6 @@
 import unittest
 
-from journey_2.day0.solution import ClassName, Solution
-from journey_2.day1.solution import MergeStringAlternatively
+from journey_2.day0.solution import Solution
 
 
 class SolutionTest(unittest.TestCase):
