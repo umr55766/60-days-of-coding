@@ -6,7 +6,10 @@ class Solution:
         return param
 
     def rightSideView(self, root):
-        pass
+        if root is None:
+            return []
+
+        return [root.val] + self.rightSideView(root.right)
 
 
 class TreeNode:
