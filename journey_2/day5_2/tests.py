@@ -20,3 +20,8 @@ class SolutionTest(unittest.TestCase):
     def test_example_3(self):
         root = None
         self.assertEqual(Solution().rightSideView(root), [])
+
+    def test_example_4(self):
+        root = TreeNode(1)
+        root.left = TreeNode(2)
+        self.assertEqual(Solution().rightSideView(root), [1, 2])
