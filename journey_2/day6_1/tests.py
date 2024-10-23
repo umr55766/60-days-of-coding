@@ -7,9 +7,9 @@ class SolutionTest(unittest.TestCase):
     def test_1(self):
         rooms = [[1], [2], [3], []]
         result = Solution().can_visit_all_rooms(rooms)
-        self.assertTrue(result)  # Expected output: True
+        self.assertEqual(result, True)
 
     def test_2(self):
         rooms = [[1, 3], [3, 0, 1], [2], [0]]
         result = Solution().can_visit_all_rooms(rooms)
-        self.assertFalse(result)  # Expected output: False
+        self.assertEqual(result, False)
