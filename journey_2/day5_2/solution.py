@@ -1,15 +1,20 @@
 class Solution:
     def __init__(self):
-        pass
+        self.right_views = {}
 
-    def method_name(self, param):
-        return param
-
-    def rightSideView(self, root):
+    def rightSideView(self, root, level=0):
         if root is None:
-            return []
+            return list(self.right_views.values())
 
-        return [root.val] + self.rightSideView(root.right)
+        self.right_views[level] = root.val
+
+        if root.left:
+            self.rightSideView(root.left, level+1)
+
+        if root.right:
+            self.rightSideView(root.right, level + 1)
+
+        return list(self.right_views.values())
 
 
 class TreeNode:
