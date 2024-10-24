@@ -1,6 +1,3 @@
 class Solution:
-    def __init__(self):
+    def nearest_exit(self, maze, entrance):
         pass
-
-    def method_name(self, param):
-        return param

@@ -4,11 +4,25 @@ from journey_2.day7.solution import Solution
 
 
 class SolutionTest(unittest.TestCase):
-    def test_1(self):
-        self.assertEqual(Solution().method_name(1), 1)
+    def test_case_1(self):
+        maze = [["+", "+", ".", "+"],
+                [".", ".", ".", "+"],
+                ["+", "+", "+", "."]]
+        entrance = [1, 2]
+        expected_output = 1
+        self.assertEqual(Solution().nearest_exit(maze, entrance), expected_output)
 
-    def test_2(self):
-        self.assertEqual(Solution().method_name(2), 2)
+    def test_case_2(self):
+        maze = [["+", "+", "+"],
+                [".", ".", "."],
+                ["+", "+", "+"]]
+        entrance = [1, 0]
+        expected_output = 2
+        self.assertEqual(Solution().nearest_exit(maze, entrance), expected_output)
 
-    def test_3(self):
-        self.assertEqual(Solution().method_name(3), 3)
+    def test_case_3(self):
+        maze = [[".", "+"]]
+        entrance = [0, 0]
+        expected_output = -1
+        self.assertEqual(Solution().nearest_exit(maze, entrance), expected_output)
+
