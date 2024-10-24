@@ -22,13 +22,13 @@ class Solution:
                 next_location = [entrance[0] + direction[0], entrance[1] + direction[1]]
                 if self.can_visit(next_location):
                     temp = self.nearest_exit(maze, entrance, next_location, 1)
-                    self.result = min(self.result, temp) if self.result is not None else temp
+                    self.result = min(self.result, temp) if self.result is not None and self.result!=-1 else temp
             else:
                 self.maze[location[0]][location[1]] = "*"
                 next_location = [location[0] + direction[0], location[1] + direction[1]]
                 if self.can_visit(next_location):
                     temp = self.nearest_exit(maze, entrance, next_location, distance+1)
-                    self.result = min(self.result, temp) if self.result is not None else temp
+                    self.result = min(self.result, temp) if self.result is not None and self.result!=-1 else temp
 
         return self.result if self.result is not None else -1
 
