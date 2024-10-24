@@ -31,7 +31,7 @@ class Solution:
         return self.result if self.result is not None else -1
 
     def is_at_exit(self, entrance):
-        return (entrance[0] == 0 or entrance[0] == len(self.maze)) or (entrance[1] == 0 or entrance[1] == len(self.maze[0]))
+        return (entrance[0] == 0 or entrance[0] == len(self.maze)-1) or (entrance[1] == 0 or entrance[1] == len(self.maze[0])-1)
 
     def can_visit(self, location):
         return (0 <= location[0] < len(self.maze)) and (0 <= location[1] < len(self.maze[0])) and self.maze[location[0]][location[1]] == "."
