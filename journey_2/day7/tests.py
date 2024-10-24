@@ -26,3 +26,10 @@ class SolutionTest(unittest.TestCase):
         expected_output = -1
         self.assertEqual(Solution().nearest_exit(maze, entrance), expected_output)
 
+
+    def test_case_4(self):
+        maze = [["+",".","+","+","+","+","+"],["+",".","+",".",".",".","+"],["+",".","+",".","+",".","+"],["+",".",".",".",".",".","+"],["+","+","+","+",".","+","."]]
+        entrance = [0, 1]
+        expected_output = 7
+        self.assertEqual(Solution().nearest_exit(maze, entrance), expected_output)
+
