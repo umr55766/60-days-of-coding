@@ -18,11 +18,13 @@ class Solution:
 
         for direction in self.directions:
             if location is None:
+                self.maze[entrance[0]][entrance[1]] = "*"
                 next_location = [entrance[0] + direction[0], entrance[1] + direction[1]]
                 if self.can_visit(next_location):
                     temp = self.nearest_exit(maze, entrance, next_location, 1)
                     self.result = min(self.result, temp) if self.result is not None else temp
             else:
+                self.maze[location[0]][location[1]] = "*"
                 next_location = [location[0] + direction[0], location[1] + direction[1]]
                 if self.can_visit(next_location):
                     temp = self.nearest_exit(maze, entrance, next_location, distance+1)
