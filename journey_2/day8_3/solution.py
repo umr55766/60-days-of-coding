@@ -1,40 +1,33 @@
 class Solution:
     def __init__(self):
-        self.trie = {}
+        self.root = TrieNode()
 
-    def insert(self, word: str, node=None) -> None:
-        if len(word) == 0:
-            if node is not None:
-                node["isWord"] = True
-            return
+    def insert(self, word: str) -> None:
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                node.children[char] = TrieNode()
+            node = node.children[char]
+        node.isWord = True
 
-        node = node if node is not None else self.trie
+    def search(self, word: str) -> bool:
+        node = self.root
+        for char in word:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return node.isWord
 
-        if word[0] not in node:
-            node[word[0]] = {
-                "isWord": False
-            }
+    def starts_with(self, prefix: str) -> bool:
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return False
+            node = node.children[char]
+        return True
 
-        self.insert(word[1:], node[word[0]])
 
-    def search(self, word: str, node=None) -> bool:
-        node = self.trie if node is None else node
-
-        if len(word) == 0:
-            return "isWord" in node and node["isWord"]
-
-        if word[0] not in node:
-            return False
-
-        return self.search(word[1:], node[word[0]])
-
-    def starts_with(self, prefix: str, node=None) -> bool:
-        node = self.trie if node is None else node
-
-        if len(prefix) == 0:
-            return True
-
-        if prefix[0] not in node:
-            return False
-
-        return self.starts_with(prefix[1:], node[prefix[0]])
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.isWord = False
