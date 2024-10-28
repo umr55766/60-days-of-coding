@@ -2,5 +2,5 @@ class Solution:
     def __init__(self):
         pass
 
-    def method_name(self, param):
+    def num_of_islands(self, param):
         return param
