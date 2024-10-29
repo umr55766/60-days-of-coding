@@ -5,14 +5,14 @@ class Solution:
     def daily_temperatures(self, temperatures):
         results = [0] * len(temperatures)
 
-        indexes_pending_update = []
+        pending_indexes = []
 
-        for index, temperature in enumerate(temperatures):
+        for current_index, current_temperature in enumerate(temperatures):
 
-            while indexes_pending_update and temperature > temperatures[indexes_pending_update[-1]]:
-                index_pending_update = indexes_pending_update.pop()
-                results[index_pending_update] = index - index_pending_update
+            while pending_indexes and current_temperature > temperatures[pending_indexes[-1]]:
+                last_index = pending_indexes.pop()
+                results[last_index] = current_index - last_index
 
-            indexes_pending_update.append(index)
+            pending_indexes.append(current_index)
 
         return results
