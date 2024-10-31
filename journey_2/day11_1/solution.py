@@ -1,19 +1,17 @@
 class Solution:
     def max_vowels(self, string, substring_length):
-        VOWELS = ["a", "e", "i", "o", "u"]
-        if len(string) < substring_length:
-            return len([char for char in string if char in VOWELS])
+        VOWELS = {"a", "e", "i", "o", "u"}
 
-        substring = [char for char in string[0: substring_length]]
-        current_vowels_count = vowels_count = len([char for char in substring if char.lower() in VOWELS])
+        current_vowels_count = sum(1 for char in string[:substring_length] if char in VOWELS)
+        max_vowels_count = current_vowels_count
 
-        for index in range(substring_length, len(string)):
-            current_vowels_count += 1 if string[index] in VOWELS else 0
-            current_vowels_count -= 1 if substring[0] in VOWELS else 0
+        for i in range(substring_length, len(string)):
+            if string[i] in VOWELS:
+                current_vowels_count += 1
 
-            del substring[0]
-            substring.append(string[index])
+            if string[i - substring_length] in VOWELS:
+                current_vowels_count -= 1
 
-            vowels_count = max(vowels_count, current_vowels_count)
+            max_vowels_count = max(max_vowels_count, current_vowels_count)
 
-        return vowels_count
+        return max_vowels_count
