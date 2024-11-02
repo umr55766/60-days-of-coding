@@ -2,5 +2,5 @@ class Solution:
     def __init__(self):
         pass
 
-    def method_name(self, param):
+    def get_pivot_point(self, param):
         return param
