@@ -12,3 +12,6 @@ class SolutionTest(unittest.TestCase):
 
     def test_3(self):
         self.assertEqual(Solution().get_longest_subsequence_length("abc", "def"), 0)
+
+    def test_4(self):
+        self.assertEqual(Solution().get_longest_subsequence_length("abcba", "abcbcba"), 5)
