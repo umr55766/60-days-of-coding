@@ -5,7 +5,7 @@ from journey_2.day16.solution import Solution
 
 class SolutionTest(unittest.TestCase):
     def test_1(self):
-        self.assertEqual(Solution().is_close("abc", "abbccc"), True)
+        self.assertEqual(Solution().is_close("abc", "bca"), True)
 
     def test_2(self):
         self.assertEqual(Solution().is_close("a", "abbccc"), False)
