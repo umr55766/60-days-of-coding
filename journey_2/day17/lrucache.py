@@ -8,7 +8,12 @@ class LRUCache:
         self.cache = OrderedDict()
 
     def put(self, key, value):
-        pass
+        if key in self.cache:
+            self.cache.move_to_end(key)
+        self.cache[key] = value
+
+        if len(self.cache) > self.capacity:
+            self.cache.popitem(last=False)
 
     def get(self, key):
         if key not in self.cache:
