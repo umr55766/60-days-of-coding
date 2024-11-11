@@ -25,6 +25,11 @@ class SolutionTest(unittest.TestCase):
         expected_output = [1, 3, 5, 2, 4]
         self.assertEqual(linked_list_to_list(Solution().odd_even_list(head)), expected_output)
 
+    def test_with_3_nodex(self):
+        head = list_to_linked_list([1, 2, 3])
+        expected_output = [1, 3, 2]
+        self.assertEqual(linked_list_to_list(Solution().odd_even_list(head)), expected_output)
+
     def test_example2(self):
         head = list_to_linked_list([2, 1, 3, 5, 6, 4, 7])
         expected_output = [2, 3, 6, 7, 1, 5, 4]
