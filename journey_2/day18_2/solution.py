@@ -1,3 +1,6 @@
+from collections import deque
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -10,28 +13,32 @@ class Solution:
         pass
 
     def max_level_sum(self, root):
-        level_sums = self.get_all_level_sums(root, {}, 1)
+        if not root:
+            return 0
 
-        max_sum = level_sums[1]
-        max_sum_level = 1
+        max_sum = float('-inf')
+        max_level = 1
+        current_level = 1
+        queue = deque([root])
 
-        for key in level_sums:
-            if level_sums[key] > max_sum:
-                max_sum = level_sums[key]
-                max_sum_level = key
+        while queue:
+            level_sum = 0
+            level_size = len(queue)
 
-        return max_sum_level
+            for _ in range(level_size):
+                node = queue.popleft()
+                level_sum += node.val
 
-    def get_all_level_sums(self, root: TreeNode, level_sums : dict, level: int):
-        if level in level_sums:
-            level_sums[level] += root.val
-        else:
-            level_sums[level] = root.val
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
 
-        if root.left:
-            self.get_all_level_sums(root.left, level_sums, level + 1)
+            # Update max level if this level's sum is greater
+            if level_sum > max_sum:
+                max_sum = level_sum
+                max_level = current_level
 
-        if root.right:
-            self.get_all_level_sums(root.right, level_sums, level + 1)
+            current_level += 1
 
-        return level_sums
+        return max_level
